@@ -62,4 +62,10 @@ resource "azurerm_linux_virtual_machine" "jump-box" {
     sku       = "18.04-LTS"
     version   = "latest"
   }
+
+  tags = {
+    environment = "dev"
+    managed-by = "terraform"
+    role = "jump"
+  }
 }
