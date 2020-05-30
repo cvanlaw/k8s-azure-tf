@@ -34,3 +34,8 @@ override.tf.json
 # example: *tfplan*
 *.plan
 *tfplan*
+
+# Ignore certificates genereated by cfssl
+*.pem
+*.cert
+*.csr
