@@ -12,7 +12,7 @@ resource "azurerm_linux_virtual_machine_scale_set" "k8s-workers" {
   name                = "k8s-workers-vmss"
   resource_group_name = azurerm_resource_group.dev-cus-k8s-workers-rg.name
   location            = azurerm_resource_group.dev-cus-k8s-workers-rg.location
-  sku                 = "Standard_F4s"
+  sku                 = "Standard_B4ms"
   instances           = 3
   admin_username      = "adminuser"
 

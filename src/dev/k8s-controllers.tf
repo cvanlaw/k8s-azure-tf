@@ -12,7 +12,7 @@ resource "azurerm_linux_virtual_machine_scale_set" "k8s-controllers" {
   name                = "k8s-controllers-vmss"
   resource_group_name = azurerm_resource_group.dev-cus-k8s-controllers-rg.name
   location            = azurerm_resource_group.dev-cus-k8s-controllers-rg.location
-  sku                 = "Standard_F2s"
+  sku                 = "Standard_B2s"
   instances           = 3
   admin_username      = "adminuser"
 
