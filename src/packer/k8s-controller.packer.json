@@ -1,0 +1,48 @@
+{
+    "description": "K8s Base Image",
+    "builders": [
+        {
+            "name": "azure",
+            "type": "azure-arm",
+            "client_id": "{{user `azure_client_id`}}",
+            "client_secret": "{{user `azure_client_secret`}}",
+            "tenant_id": "{{user `azure_tenant_id`}}",
+            "subscription_id": "{{user `azure_subscription_id`}}",
+            "managed_image_resource_group_name": "{{user `azure_resource_group_name`}}",
+            "managed_image_name": "k8s-base-{{isotime \"2006-01-02T030405\"}}",
+            "os_type": "Linux",
+            "image_publisher": "Canonical",
+            "image_offer": "UbuntuServer",
+            "image_sku": "18.04-LTS",
+            "location": "{{user `azure_location`}}",
+            "vm_size": "Standard_DS2_v2"
+        }
+    ],
+    "provisioners": [
+        {
+            "type": "shell",
+            "script": "update-machine.sh",
+            "execute_command": "echo '' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'"
+        },
+        {
+            "type": "file",
+            "source": "../certificates/ca.pem",
+            "destination": "ca.pem"
+        },
+        {
+            "type": "file",
+            "source": "../certificates/ca-key.pem",
+            "destination": "ca-key.pem"
+        },
+        {
+            "type": "file",
+            "source": "../certificates/service-account.pem",
+            "destination": "service-account.pem"
+        },
+        {
+            "type": "file",
+            "source": "../certificates/service-account-key.pem",
+            "destination": "service-account-key.pem"
+        }
+    ]
+}

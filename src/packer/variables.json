@@ -1,0 +1,10 @@
+{
+    "azure_client_id": "",
+    "azure_client_secret": "",
+    "azure_subscription_id": "18364679-61d6-4f4d-873b-b24a6ecb3f0d",
+    "azure_tenant_id": "d09b431c-7770-4dbe-a1a2-a20abbcf1f1d",
+  
+    "azure_location": "Central US",
+    "azure_resource_group_name": "packer-k8s-images"
+  }
+  
