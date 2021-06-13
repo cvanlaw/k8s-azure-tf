@@ -3,7 +3,7 @@ resource "azurerm_resource_group" "dev-cus-jump-rg" {
   location = "centralus"
 
   tags = {
-    environment = "dev"
+    environment = var.environment
   }
 }
 
@@ -14,7 +14,7 @@ resource "azurerm_public_ip" "jump-public-ip" {
   allocation_method   = "Static"
 
   tags = {
-    environment = "Production"
+    environment = var.environment
   }
 }
 
@@ -29,11 +29,6 @@ resource "azurerm_network_interface" "jump-nic" {
     private_ip_address_allocation = "Dynamic"
     public_ip_address_id          = azurerm_public_ip.jump-public-ip.id
   }
-
-  # ip_configuration {
-  #     name = "external"
-  #     public_ip_address_id = azurerm_public_ip.jump-public-ip.id
-  # }
 }
 
 resource "azurerm_linux_virtual_machine" "jump-box" {
@@ -64,7 +59,7 @@ resource "azurerm_linux_virtual_machine" "jump-box" {
   }
 
   tags = {
-    environment = "dev"
+    environment = var.environment
     managed-by = "terraform"
     role = "jump"
   }

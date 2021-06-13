@@ -3,7 +3,7 @@ resource "azurerm_resource_group" "dev-cus-k8s-controllers-rg" {
   location = "centralus"
 
   tags = {
-    environment = "dev"
+    environment = var.environment
     managed-by = "terraform"
   }
 }
@@ -46,7 +46,7 @@ resource "azurerm_linux_virtual_machine_scale_set" "k8s-controllers" {
   }
 
   tags = {
-    environment = "dev"
+    environment = var.environment
     managed-by = "terraform"
     role = "controller"
   }
